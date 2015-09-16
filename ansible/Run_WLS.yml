@@ -1,0 +1,6 @@
+# /etc/ansible/Run_WLS.yml
+- hosts: all
+  user: root
+
+  roles:
+    - InstallWLS

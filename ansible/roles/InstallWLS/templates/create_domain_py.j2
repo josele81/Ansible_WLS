@@ -1,0 +1,17 @@
+#!/usr/bin/python
+import os, sys
+WlsHome=sys.argv[1]
+AdminPort=sys.argv[2]
+ListenAdd=sys.argv[3]
+DomainName=sys.argv[4]
+
+readTemplate(WlsHome + '/wlserver/common/templates/wls/wls.jar')
+cd('/Security/base_domain/User/weblogic')
+cmo.setPassword('weblogic12')
+cd('/Server/AdminServer')
+cmo.setName('AdminServer')
+cmo.setListenPort(int(AdminPort))
+cmo.setListenAddress(ListenAdd)
+writeDomain(WlsHome +'/domains/'+ DomainName)
+closeTemplate()
+exit()

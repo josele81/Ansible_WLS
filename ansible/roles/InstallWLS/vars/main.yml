@@ -1,0 +1,4 @@
+wls_installer: /opt/tmp/fmw_12.1.3.0.0_wls.jar
+oracle_user: userlab
+oracle_group: userlab
+java_home: /opt/java/latest/bin/java 

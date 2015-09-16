@@ -1,0 +1,10 @@
+InstallPath: /opt/weblogic
+ListenPort: 7001
+resp_file: /opt/tmp/OraInv/host1/InstallWLS.rsp 
+oraInv: /opt/tmp/OraInv/host1/oraInst.loc
+AdminPort: 7001
+ListenAdd: wlshost1
+DomainName: Host1Domain
+wlst_sh: "{{ InstallPath }}/wlserver/common/bin/wlst.sh"
+create_domain_py: /opt/tmp/py/create_domain1.py
+boot_properties: "{{ InstallPath }}/domain/{{ DomainName }}/server/AdminServer/security/boot.properties"

@@ -1,0 +1,25 @@
+#In case of Java installation 
+#name: Install JVM
+#shell: /bin/su - "{{ oracle_install_user }}" -c "/bin/tar xzf {{ jvm_installer }} -C {{ runtime_home }}"
+
+- name: Install WLS
+  shell: /bin/su - "{{ oracle_user }}" -c "{{ java_home }} -jar {{ wls_installer }} -silent -novalidation -responseFile {{ resp_file }} -invPtrLoc {{ oraInv }}"
+
+- name: Configure WLS
+  template:
+    src=roles/InstallWLS/templates/create_domain_py.j2 
+    dest="{{ create_domain_py }}"
+    owner="{{ oracle_user }}"
+    group="{{ oracle_group }}"
+    #mode=0644
+    
+- name: Execution py basic domain
+  shell: /bin/su - "{{ oracle_user }}" -c "{{ wlst_sh }} {{ create_domain_py }} {{ InstallPath }} {{ ListenPort }} {{ ListenAdd }} {{ DomainName }}"
+
+- name: Configuring boot.properties
+  template:
+    src=roles/InstallWLS/templates/boot_properties.j2 
+    dest="{{ boot_properties }}"   
+
+- name: Starting weblogics
+  shell: /bin/su - "{{ oracle_user }}" -c "{{ InstallPath }}/domain/{{ DomainName }}/bin/startWebLogic.sh &"
