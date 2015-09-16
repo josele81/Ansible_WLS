@@ -19,7 +19,10 @@
 - name: Configuring boot.properties
   template:
     src=roles/InstallWLS/templates/boot_properties.j2 
-    dest="{{ boot_properties }}"   
+    dest="{{ boot_properties }}"
+    owner="{{ oracle_user }}"
+    group="{{ oracle_group }}"
+    mode=0755
 
 - name: Starting weblogics
   shell: /bin/su - "{{ oracle_user }}" -c "{{ InstallPath }}/domain/{{ DomainName }}/bin/startWebLogic.sh &"
