@@ -1,0 +1,4 @@
+#Oracle Installer Location File Location
+#Tue Sep 15 16:41:41 CEST 2015
+inst_group=userlab
+inventory_loc=/opt/weblogic
