@@ -42,3 +42,5 @@ vars/main.yml: common varibales for both machines and config
 groups_var: specific varibales for groups of machines
 host: inventory of machines grouped by type of service.
 ansible.cfg: global configuration for ansible.
+
+NOTE: response file and OraInventory for WebLogic instalation has been located into temp dir, in this case /opt/tmp/OraInv. This value is referenced in apprserversX group_vars.
